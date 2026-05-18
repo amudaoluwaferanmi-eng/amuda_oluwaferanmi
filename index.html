@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Amuda Oluwaferanmi</title>
+
+<style>
+
+:root{
+  --bg:#ffffff;
+  --card:#f5f5f7;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --muted2:#9ca3af;
+  --grad:linear-gradient(90deg,#8b5cf6,#d946ef);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1150px,90%);
+  margin:auto;
+}
+
+/* NAV */
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  border-bottom:1px solid rgba(255,255,255,.35);
+
+  box-shadow:0 8px 30px rgba(0,0,0,.04);
+}
+
+.nav-inner{
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:14px 22px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.45);
+
+  border:1px solid rgba(0,0,0,.08);
+
+  font-weight:700;
+  font-size:15px;
+
+  backdrop-filter:blur(14px);
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:linear-gradient(90deg,#8b5cf6,#d946ef);
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+.btn{
+  padding:13px 20px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s;
+}
+
+.primary{
+  background:var(--grad);
+  color:white;
+}
+
+.primary:hover{
+  transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+  padding:120px 0 90px;
+}
+
+.hero-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:#f3f0ff;
+  color:#7c3aed;
+  font-size:14px;
+  margin-bottom:20px;
+  font-weight:600;
+}
+
+.hero h1{
+  font-size:65px;
+  line-height:1.05;
+  margin-bottom:25px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  margin-bottom:35px;
+}
+
+.hero-btns{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.secondary{
+  background:#f3f4f6;
+  color:var(--text);
+}
+
+.stats{
+  display:flex;
+  gap:12px;
+  margin-top:40px;             /* reduce distance from hero text */
+  flex-wrap:wrap;
+  justify-content:flex-start;  /* aligns stats neatly */
+}
+
+.stat{
+  padding:15px 18px;           /* smaller padding */
+  border-radius:16px;          /* tighter corners */
+  background:rgba(255,255,255,.45);
+  border:1px solid rgba(0,0,0,.08);
+  backdrop-filter:blur(12px);
+  transition:.3s;
+  flex:1 1 120px;              /* make them smaller and flexible */
+  text-align:center;
+}
+
+.stat:hover{
+  transform:translateY(-4px);
+}
+
+.stat h2{
+  font-size:22px;              /* smaller number */
+  margin-bottom:6px;
+}
+
+.stat p{
+  font-size:12px;              /* smaller text */
+  color:var(--muted);
+  line-height:1.4;
+}
+
+
+/* SECTION */
+
+.section{
+  padding:90px 0;
+}
+
+.section-title{
+  font-size:45px;
+  margin-bottom:15px;
+}
+
+.section-text{
+  color:var(--muted);
+  max-width:700px;
+  line-height:1.8;
+  margin-bottom:50px;
+}
+
+/* SERVICES */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* UPDATE */
+
+.update-card{
+  background:#faf5ff;
+  border:1px solid #e9d5ff;
+}
+
+.update-tag{
+  display:inline-block;
+  margin-bottom:18px;
+  font-size:13px;
+  color:#7c3aed;
+  font-weight:700;
+}
+
+.update-card img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+/* REVIEWS */
+
+.review{
+  background:white;
+}
+
+.review p{
+  margin-bottom:20px;
+}
+
+/* FAQ */
+
+.faq{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.faq-item{
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:25px;
+}
+
+.faq-item h4{
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+.faq-item p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* FOOTER */
+
+.footer{
+  padding:70px 0;
+  border-top:1px solid var(--border);
+  margin-top:60px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.footer p{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .hero-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .nav-inner{
+    flex-direction:column;
+    height:auto;
+    padding:20px 0;
+    gap:20px;
+  }
+
+  .nav-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<div class="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <button class="logo">
+        <span class="dot"></span>
+        AFCREATIVE DESIGN
+      </button>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+
+        <a href="https://tinyurl.com/afcreativedesign" target="_blank">
+          Portfolio
+        </a>
+
+        <a href="#updates">Updates</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">Q&A</a>
+      </div>
+
+      <a class="btn primary"
+      target="_blank"
+      href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20I%20want%20to%20work%20with%20you">
+        Let's Talk
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="container">
+
+    <!-- HERO CONTENT -->
+
+      <div class="hero-content">
+
+        <span class="badge">
+          Brand Designer & Website Developer
+        </span>
+
+        <h1>
+          I build modern brands,
+          websites and digital experiences.
+        </h1>
+
+        <p>
+          AFCREATIVE DESIGN is my creative portfolio where I showcase
+          branding, graphics, websites and digital projects built for
+          businesses, creators and modern brands.
+        </p>
+
+        <div class="hero-btns">
+
+          <a class="btn primary"
+          href="https://tinyurl.com/afcreativedesign"
+          target="_blank">
+            View Portfolio
+          </a>
+
+          <a class="btn secondary"
+          href="https://whatsapp.com/channel/0029VbCNExr0Qeao2RL08325"
+          target="_blank">
+            Join Channel
+          </a>
+
+        </div>
+
+      </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2>20+</h2>
+        <p>Creative Designs</p>
+      </div>
+
+      <div class="stat">
+        <h2>10+</h2>
+        <p>Website Projects</p>
+      </div>
+
+      <div class="stat">
+        <h2>Open</h2>
+        <p>Available For Work</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Services
+    </h2>
+
+    <p class="section-text">
+      Creative and digital services built to help brands stand out online.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Brand Identity</h3>
+        <p>
+          Logo design, visual identity systems and modern brand direction.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Website Design</h3>
+        <p>
+          Clean and responsive websites built for creators and businesses.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Social Media Design</h3>
+        <p>
+          Creative post designs, promo banners and campaign visuals.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Portfolio Websites</h3>
+        <p>
+          Personal portfolio websites for creatives, freelancers and brands.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- UPDATES -->
+
+<section class="section" id="updates">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Updates & Offers
+    </h2>
+
+    <p class="section-text">
+      Latest announcements, promos, events and design updates.
+    </p>
+
+    <div class="grid">
+
+      <div class="card update-card">
+        <span class="update-tag">PROMO</span>
+<img src="eid.png" alt="">
+        <h3>Eid Al-Adha Graphics Design Special</h3>
+
+        <p>
+          Get a modern portfolio website for your brand or personal business.
+        </p>
+
+        <br>
+
+        <a href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20Promo%20Code:%20EidSpecial" class="btn primary">
+          Grab Now
+        </a>
+      </div>
+
+      <div class="card update-card">
+        <span class="update-tag">EVENT</span>
+<img src="brand.png" alt="">
+        <h3>Brand Makeover Session</h3>
+
+        <p>
+          Stand a chance to redesign your brand and online presence
+        </p>
+<span class="update-tag">Wed. May 20, 2026 - Sat. June 6, 2026</span>
+        <br>
+
+        <a href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20I%20want%20to%20book%20the%20Brand%20Makeover" class="btn secondary">
+          Book Now
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- REVIEWS -->
+
+<section class="section" id="reviews">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Reviews
+    </h2>
+
+    <p class="section-text">
+      What clients and visitors are saying.
+    </p>
+
+    <div class="grid">
+
+      <div class="card review">
+        <p>
+          “Clean designs, fast delivery and very creative work.”
+        </p>
+
+        <strong>— Client Review</strong>
+      </div>
+
+      <div class="card review">
+        <p>
+          “The website design was modern and professional.”
+        </p>
+
+        <strong>— Website Client</strong>
+      </div>
+
+    </div>
+
+    <br><br>
+
+    <a class="btn primary" href="#">
+      Leave A Review
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="section" id="faq">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Questions & Answers
+    </h2>
+
+    <p class="section-text">
+      Common questions from clients and visitors.
+    </p>
+
+    <div class="faq">
+
+      <div class="faq-item">
+        <h4>How long does a website take?</h4>
+
+        <p>
+          Depending on the project, most websites take a few days to complete.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you redesign brands?</h4>
+
+        <p>
+          Yes. I help brands improve their visual identity and online presence.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>How can I contact you?</h4>
+
+        <p>
+          You can contact me through WhatsApp using the Let’s Talk button.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid three">
+
+      <div>
+        <h3>AFCREATIVE DESIGN</h3>
+        <p>Your trusted creative partner. Grow your business through transforming design, websites, and digital presence.</p>
+      </div>
+
+      <div>
+        <h4>Brand Designer</h4>
+        <p>Trusted</p>
+        <p>Available for work</p>
+        <p>Competent</p>
+        <p>View Service Plan</p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>📞 +2348169518870</p>
+        <p>📧 amudaoluwaferanmi@gmail.com</p>
+        <a href="https://wa.me/2348169518870" target="_blank" class="btn primary">
+          WhatsApp Me
+        </a>
+      </div>
+
+    </div>
+
+    <p style="margin-top:20px; text-align:center;">
+      © <span id="year"></span> AFCREATIVE DESIGN. All rights reserved.
+    </p>
+  </div>
+</div>
+  </footer>
+
+</body>
+</html>
