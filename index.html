@@ -821,6 +821,9 @@ onclick="toggleReviewForm()">
   </footer>
 <script>
 
+const reviewList =
+document.getElementById("reviewList");
+
 function toggleReviewForm(){
 
   const form =
@@ -830,6 +833,44 @@ function toggleReviewForm(){
 
 }
 
+/* LOAD SAVED REVIEWS */
+
+window.onload = function(){
+
+  const savedReviews =
+  JSON.parse(localStorage.getItem("reviews")) || [];
+
+  savedReviews.forEach(review => {
+
+    createReview(
+      review.text,
+      review.name
+    );
+
+  });
+
+};
+
+/* CREATE REVIEW CARD */
+
+function createReview(text,name){
+
+  const newReview =
+  document.createElement("div");
+
+  newReview.className = "review-card";
+
+  newReview.innerHTML = `
+    <p>${text}</p>
+    <span>— ${name}</span>
+  `;
+
+  reviewList.prepend(newReview);
+
+}
+
+/* ADD REVIEW */
+
 function addReview(){
 
   const reviewText =
@@ -837,9 +878,6 @@ function addReview(){
 
   const reviewName =
   document.getElementById("reviewName");
-
-  const reviewList =
-  document.getElementById("reviewList");
 
   if(
     reviewText.value.trim() === "" ||
@@ -849,18 +887,29 @@ function addReview(){
     return;
   }
 
-  const newReview =
-  document.createElement("div");
+  /* SHOW REVIEW */
 
-  newReview.className = "review-card";
+  createReview(
+    reviewText.value,
+    reviewName.value
+  );
 
-  newReview.innerHTML = `
-  <p>${reviewText.value}</p>
+  /* SAVE REVIEW */
 
-  <span>— ${reviewName.value}</span>
-`;
+  const savedReviews =
+  JSON.parse(localStorage.getItem("reviews")) || [];
 
-  reviewList.prepend(newReview);
+  savedReviews.push({
+    text:reviewText.value,
+    name:reviewName.value
+  });
+
+  localStorage.setItem(
+    "reviews",
+    JSON.stringify(savedReviews)
+  );
+
+  /* CLEAR INPUTS */
 
   reviewText.value = "";
   reviewName.value = "";
