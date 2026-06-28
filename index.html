@@ -64,9 +64,15 @@
     /* ── HERO ── */
     .hero {
       min-height: 85vh;
-      display: flex; flex-direction: column; justify-content: center;
+      display: flex; align-items: center;
       padding: 80px 5% 60px;
       position: relative; overflow: hidden;
+      gap: 40px;
+    }
+    .hero-left { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .hero-right {
+      flex-shrink: 0; width: 300px;
+      display: flex; align-items: center; justify-content: center;
     }
     .hero::before {
       content: '';
@@ -102,6 +108,49 @@
       margin-bottom: 36px; line-height: 1.75;
     }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Floating business card */
+    .biz-card {
+      width: 280px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 60px rgba(168,85,247,.12), 0 4px 16px rgba(0,0,0,.06);
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    @keyframes floatCard {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .biz-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .biz-card-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif; flex-shrink: 0;
+    }
+    .biz-card-name { font-weight: 800; font-size: .9rem; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.2; }
+    .biz-card-role { font-size: .72rem; color: #888; margin-top: 3px; }
+    .biz-card-divider { height: 1px; background: #f0f0f0; margin-bottom: 16px; }
+    .biz-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .biz-stat { background: #f5f5f7; border-radius: 12px; padding: 10px 12px; }
+    .biz-stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .biz-stat-label { font-size: .68rem; color: #888; margin-top: 2px; }
+    .biz-card-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(168,85,247,.08); border: 1px solid rgba(168,85,247,.2);
+      border-radius: 50px; padding: 8px 14px;
+    }
+    .biz-card-badge .dot { width: 7px; height: 7px; background: var(--purple); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+    .biz-card-badge span { font-size: .75rem; color: var(--purple); font-weight: 600; }
+
+    @media (max-width: 768px) { .hero-right { display: none; } }
     .btn-primary {
       background: var(--grad); color: #fff; text-decoration: none;
       padding: 13px 28px; border-radius: 50px;
@@ -171,7 +220,7 @@
     }
     .update-card:hover { border-color: var(--pink); transform: translateY(-3px); }
     .update-img {
-      width: 100%; height: 180px; object-fit: cover;
+      width: 100%; height: 220px; object-fit: cover;
       background: #eee;
     }
     .update-body { padding: 20px; }
@@ -329,12 +378,48 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-badge"><span></span> Open for work · Available now</div>
-  <h1>Connect with<br><span class="grad">Amuda Oluwaferanmi</span></h1>
-  <p>Book a service, catch the latest updates, drop a review, or get your questions answered — all in one place.</p>
-  <div class="hero-btns">
-    <a class="btn-primary" href="#booking">Book a Service</a>
-    <a class="btn-outline" href="https://tinyurl.com/afcreativedesign" target="_blank">View Portfolio →</a>
+  <div class="hero-left">
+    <div class="hero-badge"><span></span> Open for work · Available now</div>
+    <h1>Connect with<br><span class="grad">Amuda Oluwaferanmi</span></h1>
+    <p>Book a service, catch the latest updates, drop a review, or get your questions answered — all in one place.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#booking">Book a Service</a>
+      <a class="btn-outline" href="https://tinyurl.com/afcreativedesign" target="_blank">View Portfolio →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="biz-card">
+      <div class="biz-card-top">
+        <div class="biz-card-avatar">A</div>
+        <div>
+          <div class="biz-card-name">Amuda Oluwaferanmi</div>
+          <div class="biz-card-role">Designer · Developer · Writer</div>
+        </div>
+      </div>
+      <div class="biz-card-divider"></div>
+      <div class="biz-card-stats">
+        <div class="biz-stat">
+          <div class="biz-stat-num">20+</div>
+          <div class="biz-stat-label">Designs</div>
+        </div>
+        <div class="biz-stat">
+          <div class="biz-stat-num">10+</div>
+          <div class="biz-stat-label">Websites</div>
+        </div>
+        <div class="biz-stat">
+          <div class="biz-stat-num">30+</div>
+          <div class="biz-stat-label">Clients</div>
+        </div>
+        <div class="biz-stat">
+          <div class="biz-stat-num">2+</div>
+          <div class="biz-stat-label">Years Exp.</div>
+        </div>
+      </div>
+      <div class="biz-card-badge">
+        <div class="dot"></div>
+        <span>Available for new projects</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -380,26 +465,26 @@
   <div class="divider"></div>
   <div class="updates-grid">
     <div class="update-card">
-      <img class="update-img" src="https://amudaoluwaferanmi-eng.github.io/amuda_oluwaferanmi/eid.png" alt="Eid Promo" onerror="this.style.background='#222';this.removeAttribute('src')"/>
+      <img class="update-img" src="birth.png" alt="Birthday Promo" onerror="this.style.background='#222';this.removeAttribute('src')"/>
       <div class="update-body">
         <span class="update-tag">🔥 Promo</span>
-        <h3>Eid Al-Adha Design Special</h3>
-        <p>Get a modern portfolio website for your brand or personal business at a special rate.</p>
-        <a href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20Promo%20Code:%20EidSpecial" target="_blank">Grab Now →</a>
+        <h3>Birthday Design Special</h3>
+        <p>Get a premium Graphics Design package for your brand or personal business at a special rate.</p>
+        <a href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20Promo%20Code:%20HBDSpecial" target="_blank">Grab Now →</a>
       </div>
     </div>
     <div class="update-card">
-      <img class="update-img" src="https://amudaoluwaferanmi-eng.github.io/amuda_oluwaferanmi/brand.png" alt="Brand Makeover" onerror="this.style.background='#222';this.removeAttribute('src')"/>
+      <img class="update-img" src="brand.png" alt="Brand Makeover" onerror="this.style.background='#222';this.removeAttribute('src')"/>
       <div class="update-body">
         <span class="update-tag">📅 Event</span>
         <h3>Brand Makeover Session</h3>
         <p>Stand a chance to redesign your brand and level up your online presence entirely.</p>
-        <small>Wed. May 20 – Sat. June 6, 2026</small>
+        <small>Wed. July 1 – Sat. July 20, 2026</small>
         <a href="https://wa.me/2348169518870?text=Hi%20Amuda%20Oluwaferanmi%2C%20I%20want%20to%20book%20the%20Brand%20Makeover" target="_blank">Book Now →</a>
       </div>
     </div>
     <div class="update-card">
-      <div class="update-img" style="background: linear-gradient(135deg,#f3e8ff,#fce7f3); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">📢</div>
+      <img class="update-img" src="photo.jpg" alt="WhatsApp Channel" />
       <div class="update-body">
         <span class="update-tag">📣 Channel</span>
         <h3>Join My WhatsApp Channel</h3>
